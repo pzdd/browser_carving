@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 import json
 import base64
 import sqlite3
@@ -9,7 +8,6 @@ from Cryptodome.Cipher import AES
 import shutil
 import csv
 
-#GLOBAL CONSTANT
 CHROME_PATH_LOCAL_STATE = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data\Local State"%(os.environ['USERPROFILE']))
 CHROME_PATH = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data"%(os.environ['USERPROFILE']))
 
@@ -65,7 +63,7 @@ def get_db_connection(chrome_path_login_db):
 if __name__ == '__main__':
     try:
         #Create Dataframe to store passwords
-        with open('decrypted_password.csv', mode='w', newline='', encoding='utf-8') as decrypt_password_file:
+        with open('chrome_passwords.csv', mode='w', newline='', encoding='utf-8') as decrypt_password_file:
             csv_writer = csv.writer(decrypt_password_file, delimiter=',')
             csv_writer.writerow(["index","url","username","password"])
             #(1) Get secret key
